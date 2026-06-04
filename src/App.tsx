@@ -44,10 +44,13 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Calculator</h1>
-      <Display expression={previousValue + operator + current} currentNumber={current}/>
-      {buttons.map(b => <Button key={b} label={b} onClick={() => ["+", "-", "x", "÷"].includes(b) ? handleOperator(b) : b === "C" ? handleClear() : b === "=" ? handleEquals() :handleNumber(b)} />)}
+    <div className="min-h-screen flex items-center justify-center bg-cyan-300">
+      <div className=" bg-violet-900 text-orange-400 p-4">
+        <Display expression={previousValue + operator + current} currentNumber={current}/>
+        <div className="grid grid-cols-4 gap-2 ">
+        {buttons.map(b => <Button key={b} label={b} onClick={() => ["+", "-", "x", "÷"].includes(b) ? handleOperator(b) : b === "C" ? handleClear() : b === "=" ? handleEquals() :handleNumber(b)} isWide={b === "="} variant={["+", "-", "x", "÷"].includes(b) ? "operator" : b === "C" ? "clear" : b === "=" ? "equals" : "number" }/>)}
+        </div>
+      </div>
     </div>
   )
 }

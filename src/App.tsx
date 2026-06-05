@@ -39,14 +39,15 @@ function App() {
       case "÷":
         setCurrent(String(parseFloat(previousValue) / parseFloat(current)))
         break
-
     }
+        setOperator("")
+        setPreviousValue("")
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cyan-300">
+    <div className="min-h-screen flex items-center justify-center bg-black">
       <div className=" bg-violet-900 text-orange-400 p-4">
-        <Display expression={previousValue + operator + current} currentNumber={current}/>
+        <Display expression={ operator === "" ? "" : previousValue + operator + current} currentNumber={current}/>
         <div className="grid grid-cols-4 gap-2 ">
         {buttons.map(b => <Button key={b} label={b} onClick={() => ["+", "-", "x", "÷"].includes(b) ? handleOperator(b) : b === "C" ? handleClear() : b === "=" ? handleEquals() :handleNumber(b)} isWide={b === "="} variant={["+", "-", "x", "÷"].includes(b) ? "operator" : b === "C" ? "clear" : b === "=" ? "equals" : "number" }/>)}
         </div>

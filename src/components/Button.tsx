@@ -8,7 +8,7 @@ type Props = {
 const Button = ({ label, onClick, isWide, variant }: Props) => {
 
   return(
-    <button className={`${isWide ? 'col-span-2 col-start-3' : ''} ${variant === "operator" ? "bg-cyan-950" : variant === "clear" ? "bg-violet-500" : variant === "equals" ? "bg-green-400" : "bg-cyan-300"} bg-cyan-300 text-2xl text-orange-400 rounded-sm p-4`}
+    <button className={`${isWide ? 'col-span-2 col-start-3' : ''} ${variant === "operator" ? "bg-cyan-950" : variant === "clear" ? "bg-violet-500" : variant === "equals" ? "bg-violet-300" : "bg-cyan-300"} bg-cyan-300 text-2xl text-orange-400 rounded-sm p-4`}
     onClick={onClick }>{label}
     </button>
   )

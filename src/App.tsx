@@ -11,8 +11,12 @@ function App() {
   const buttons = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "x", "÷", "C", ".", "=" ]
 
   const handleNumber = (num: string) => {
-    setCurrent(num)
-    setDisplayExpression(displayExpression + num)
+    if (displayExpression.endsWith("=")) {
+      setCurrent(num)
+      setDisplayExpression("")
+    } else {
+      setCurrent(current + num )
+    }
   }
 
   const handleOperator = (op: string) => {
@@ -30,7 +34,7 @@ function App() {
   }
   setOperator(op)
   setCurrent("")
-  setDisplayExpression(displayExpression + op)
+  setDisplayExpression(displayExpression + current + op)
 }
 
     const handleClear = () => {
@@ -41,6 +45,7 @@ function App() {
   }
 
   const handleEquals = () => {
+    if (operator === "") return
     switch (operator) {
       case "+":
         setCurrent(String(parseFloat(previousValue) + parseFloat(current)))
@@ -57,6 +62,7 @@ function App() {
     }
         setOperator("")
         setPreviousValue("")
+        setDisplayExpression(displayExpression + current + "=")
   }
 
   return (
